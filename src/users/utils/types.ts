@@ -3,6 +3,11 @@ export type CreateUserParams = {
   password: string;
 };
 
+export type CreatePostParams = {
+  title: string;
+  description: string;
+};
+
 export type CreateUserProfileParams = {
   firstname: string;
   lastname: string;

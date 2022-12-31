@@ -12,6 +12,7 @@ import {
 } from '@nestjs/common';
 import { UpdateUserDto } from 'src/users/dto/UpdateUser.dto';
 import { CreateUserProfileDto } from 'src/users/dto/CreateUserProfile.dto';
+import { CreatePostDto } from 'src/users/dto/CreatePost.dto';
 
 @Controller('users')
 export class UsersController {
@@ -47,5 +48,18 @@ export class UsersController {
     @Body() payload: CreateUserProfileDto,
   ) {
     return this.userService.createUserProfile(id, payload);
+  }
+
+  @Post(':id/post')
+  createPost(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() payload: CreatePostDto,
+  ) {
+    return this.userService.createPost(id, payload);
+  }
+
+  @Get('posts')
+  getPosts() {
+    return this.userService.getPosts();
   }
 }
